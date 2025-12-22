@@ -1,3 +1,8 @@
+Write an SQL query to find the employee with the 7th highest salary.
+Write an SQL query to find all employees who do not have a manager. (Assume Employee and Manager are two different tables.)
+Write an SQL query to find all managers who do not have any employees reporting to them.
+Write an SQL query to find employees whose salary is greater than their manager’s salary and their manager’s manager’s salary.
+
 SELECT emp_name FROM employees
 WHERE salary = (
     SELECT DISTINCT salary
@@ -5,3 +10,12 @@ WHERE salary = (
     ORDER BY salary DESC
     LIMIT 6, 1
 );
+
+SELECT e.emp_id, e.emp_name
+FROM employees e
+INNER JOIN managers m
+    ON e.manager_id = m.manager_id
+WHERE e.manager_id IS NULL;
+
+
+
