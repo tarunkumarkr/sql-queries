@@ -1,0 +1,32 @@
+You are given a list of employees, where each employee belongs to a department and has a salary.
+Each employee record contains:
+Employee ID
+Employee Name
+Department Name
+Salary
+Write a program to:
+Calculate the average salary for each department.
+Display the department name along with its calculated average salary.
+Expected Outcome
+The program should output the average salary for every department present in the data
+
+select department_name,AVG(salary) AS average_salary
+from employees
+GROUP BY department_name;
+
+
+Problem 2: Department with the Highest Average Salary
+Problem Statement
+Using the data from Problem 1, determine which department has the highest average salary.
+Expected Outcome
+The program should output:
+The department name with the highest average salary
+The corresponding average salary value
+
+select department_name , Avg(salary) as average_salary
+from employees
+group by department_name
+order by average_salary desc
+limit 1;
+
+
