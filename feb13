@@ -1,0 +1,28 @@
+Find Duplicate Employee Names (SQL + Logic)
+Given a table Employee(id, name, department, salary)
+
+Part A:
+ 
+Write an SQL query to find names that appear more than once.
+
+ SELECT name, COUNT(*) AS count
+FROM Employee
+GROUP BY name
+HAVING COUNT(*) > 1;
+
+ 
+Part B:
+ 
+Write an SQL query to find the most repeated employee name based on department.
+SELECT e.department, e.name, COUNT(*) AS count
+FROM Employee e
+GROUP BY e.department, e.name
+HAVING COUNT(*) = (
+    SELECT MAX(cnt)
+    FROM (
+        SELECT COUNT(*) AS cnt
+        FROM Employee e2
+        WHERE e2.department = e.department
+        GROUP BY e2.name
+    ) t
+);
